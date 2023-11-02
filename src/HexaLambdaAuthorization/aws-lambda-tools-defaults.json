@@ -1,0 +1,18 @@
+
+{
+    "region" : "us-east-1",
+    "profile" : "default",
+    "configuration" : "Release",
+    "framework"     : "net6.0",
+    "function-name" : "HexaLambdaAuthorization",
+    "function-description" : "",
+    "package-type"         : "Zip",
+    "function-handler"     : "HexaLambdaAuthorization",
+    "function-memory-size" : 512,
+    "function-timeout"     : 15,
+    "function-runtime"     : "dotnet6",
+    "function-architecture" : "x86_64",
+    "tracing-mode"          : "PassThrough",
+    "environment-variables" : "",
+    "image-tag"             : ""
+}
