@@ -18,10 +18,13 @@ namespace HexaLambdaAuthorization.Controllers
 
         [HttpGet]
         [Route("AuthenticationByCPF")]
-        public async Task<IActionResult> AuthenticationByCPF(string cpf)
+        public async Task<IActionResult> AuthenticationByCPF(string? cpf)
         {
             try
             {
+                if(String.IsNullOrEmpty(cpf))
+                    return Ok(await _jwtAuthenticationManager.GenerateAnonymousTokenAsync());
+
                 var cliente = await _clienteRepository.GetByCPFAsync(cpf);
                 if (cliente != null)
                 {
@@ -31,20 +34,6 @@ namespace HexaLambdaAuthorization.Controllers
                 {
                     return NotFound();
                 }
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Erro interno do servidor: " + ex.Message);
-            }
-        }
-
-        [HttpGet]
-        [Route("AnonymousAuthentication")]
-        public async Task<IActionResult> AnonymousAuthentication()
-        {
-            try
-            {
-                return Ok(await _jwtAuthenticationManager.GenerateAnonymousTokenAsync());
             }
             catch (Exception ex)
             {
