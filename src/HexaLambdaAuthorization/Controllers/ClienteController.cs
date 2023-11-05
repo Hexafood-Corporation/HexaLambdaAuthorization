@@ -18,7 +18,7 @@ namespace HexaLambdaAuthorization.Controllers
 
         [HttpGet]
         [Route("AuthenticationByCPF")]
-        public async Task<IActionResult> AuthenticationByCPF(string? cpf)
+        public async Task<IActionResult> GetToken(string? cpf)
         {
             try
             {
